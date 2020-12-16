@@ -10,6 +10,9 @@ inputs:
   deviceId:
     description: 'The decive id for your account'
     required: true
+  userId:
+    description: 'The user id of your account'
+    required: true
   server:
     description: 'Homeserver of your account'
     default: 'https://matrix.org'

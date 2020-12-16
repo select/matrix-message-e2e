@@ -13,14 +13,15 @@ const server = core.getInput('server');
 const room = core.getInput('room');
 const token = core.getInput('token');
 const deviceId = core.getInput('deviceId');
+const userId = core.getInput('userId');
 
 const client = sdk.createClient({
 	baseUrl: server,
 	accessToken: token,
+	userId,
+	deviceId,
 	sessionStore: new sdk.WebStorageSessionStore(localStorage),
 	cryptoStore: new LocalStorageCryptoStore(localStorage),
-	userId: '@testbot42:matrix.org',
-	deviceId,
 });
 
 client.on('sync', async function (state, prevState, res) {
@@ -40,7 +41,7 @@ client.on('sync', async function (state, prevState, res) {
 			''
 		);
 	} catch (error) {
-		core.setFailed(error.message);
+		core.setFailed('Job failed: ' + error.message);
 	}
 	process.exit(0);
 });
