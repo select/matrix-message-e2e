@@ -1,6 +1,6 @@
 {
   "name": "matrix-message-e2e",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Send a message to an e2e encrypted matrix room",
   "main": "index.js",
   "scripts": {
