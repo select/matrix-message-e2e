@@ -51,3 +51,9 @@ jobs:
         message: "${{ github.event.sender.login }} created a pull request for ${{ github.event.repository.name }}: ${{ github.event.pull_request.title }}"
 ```
 
+## Acknowledgements
+
+This work is here thanks to 
+- https://github.com/s3krit/Matrix-Message
+- https://github.com/fadenb/Matrix-Chat-Message
+- https://github.com/matrix-org/matrix-js-sdk/issues/731
