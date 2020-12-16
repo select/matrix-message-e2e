@@ -8,10 +8,8 @@ const {
 	LocalStorageCryptoStore,
 } = require('matrix-js-sdk/lib/crypto/store/localStorage-crypto-store');
 
-console.error = (error) => {
-	console.log('Console error: ', error);
-};
-console.log = () => {};
+// Must catch all stderr to not make the job look failed on irrelevant matrix error logs
+process.stderr.write = () => {};
 
 const message = core.getInput('message');
 const server = core.getInput('server');
