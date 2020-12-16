@@ -1,0 +1,51 @@
+{
+  "name": "matrix-message-e2e",
+  "version": "1.0.0",
+  "description": "Send a message to an e2e encrypted matrix room",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.js --license LICENSE",
+    "commit": "npx git-cz",
+    "commitlint": "commitlint --from=$(git rev-parse --abbrev-ref --symbolic-full-name @{u}) --to=HEAD",
+    "release": "standard-version; git push; git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/select/matrix-message-e2e.git"
+  },
+  "keywords": [
+    "matrix"
+  ],
+  "author": "@select@github.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/select/matrix-message-e2e/issues"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run commitlint"
+    }
+  },
+  "homepage": "https://github.com/select/matrix-message-e2e#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "matrix-js-sdk": "^9.3.0",
+    "node-localstorage": "^2.1.6",
+    "olm": "https://packages.matrix.org/npm/olm/olm-3.2.1.tgz"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@vercel/ncc": "^0.25.1",
+    "commitizen": "^4.2.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.3.6",
+    "standard-version": "^9.0.0"
+  }
+}
