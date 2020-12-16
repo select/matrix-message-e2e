@@ -42,7 +42,7 @@ client.on('sync', async function (state, prevState, res) {
 	} catch (error) {
 		core.setFailed(error.message);
 	}
-	process.exit(1);
+	process.exit(0);
 });
 async function run() {
 	await client.initCrypto();
