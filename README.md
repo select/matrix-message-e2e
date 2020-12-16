@@ -21,8 +21,8 @@ In your matrix client open `Room settings`>`Advanced`, the room id lookes like t
 ## Usage
 
 **Configure GitHub Secrets** Open your GitHub repository in your browser. Navigate to `Settings`>`Secrets`. Create a new secret by clicking the `New secret` button:
-  * Name: `MATRIX_TOKEN`
-  * Value: Insert the token you copied before. Make sure that there is no newline at the end.
+	* Name: `MATRIX_TOKEN`
+	* Value: Insert the token you copied before. Make sure that there is no newline at the end.
 
 **Setup Workflow** Define a workflow in `.github/workflows/matrix-pull-request.yml` (or add a job if you already have defined workflows).
 
@@ -32,23 +32,23 @@ In your matrix client open `Room settings`>`Advanced`, the room id lookes like t
 ```yaml
 name: Pull-Request-Matrix-Message
 on:
-  pull_request:
-    types: [opened, reopened]
+	pull_request:
+		types: [opened, reopened]
 
 jobs:
-  send-message:
-    runs-on: ubuntu-latest
-    name: Send message via Matrix
-    steps:
-    - name: Send message to test room
-      id: matrix-chat-message
-      uses: select/matrix-message-e2e@v1.0.0
-      with:
-        server: ${{ secrets.MATRIX_SERVER }}
-        token: ${{ secrets.MATRIX_TOKEN }}
-        deviceId: ${{ secrets.MATRIX_DEVICEID }}
-        room: ${{ secrets.MATRIX_ROOM }}
-        message: "${{ github.event.sender.login }} created a pull request for ${{ github.event.repository.name }}: ${{ github.event.pull_request.title }}"
+	send-message:
+		runs-on: ubuntu-latest
+		name: Send message via Matrix
+		steps:
+		- name: Send message to test room
+			id: matrix-chat-message
+			uses: select/matrix-message-e2e@v1.0.4
+			with:
+				server: ${{ secrets.MATRIX_SERVER }}
+				token: ${{ secrets.MATRIX_TOKEN }}
+				deviceId: ${{ secrets.MATRIX_DEVICEID }}
+				room: ${{ secrets.MATRIX_ROOM }}
+				message: "${{ github.event.sender.login }} created a pull request for ${{ github.event.repository.name }}: ${{ github.event.pull_request.title }}"
 ```
 
 ## Acknowledgements
