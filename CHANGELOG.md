@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.9](https://github.com/select/matrix-message-e2e/compare/v1.0.8...v1.0.9) (2020-12-16)
+
+
+### Bug Fixes
+
+* redirect stderr to nirvana to not make jobs look failed ([0fd9f8e](https://github.com/select/matrix-message-e2e/commit/0fd9f8ecd75b9e859e08b7bb41ed4670dea7c27f))
+
 ### [1.0.8](https://github.com/select/matrix-message-e2e/compare/v1.0.7...v1.0.8) (2020-12-16)
 
 
