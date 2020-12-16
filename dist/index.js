@@ -6,63 +6,57 @@ module.exports =
 /***/ 2932:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+const core = __webpack_require__(2186);
 const sdk = __webpack_require__(2205);
 global.Olm = __webpack_require__(5142);
 const { LocalStorage } = __webpack_require__(7908);
 const localStorage = new LocalStorage('./scratch');
 const {
-  LocalStorageCryptoStore,
+	LocalStorageCryptoStore,
 } = __webpack_require__(8143);
-const core = __webpack_require__(2186);
 
 const message = core.getInput('message');
 const server = core.getInput('server');
 const room = core.getInput('room');
-const token =  core.getInput('token');
+const token = core.getInput('token');
 const deviceId = core.getInput('deviceId');
-const webStorageSessionStore = new sdk.WebStorageSessionStore(localStorage);
-const cstore = new LocalStorageCryptoStore(localStorage);
 
-// Debug output
-core.info(`server: ${server}`);
-core.info(`room: ${room}`);
-core.info(`token: ${token}`);
-core.info(`message: ${message}`);
-core.info(`messagetype: ${messagetype}`);
-
-// Create client object
 const client = sdk.createClient({
-  baseUrl: server,
-  accessToken: token,
-  sessionStore: webStorageSessionStore,
-  cryptoStore: cstore,
-  userId: '@testbot42:matrix.org',
-  deviceId,
+	baseUrl: server,
+	accessToken: token,
+	sessionStore: new sdk.WebStorageSessionStore(localStorage),
+	cryptoStore: new LocalStorageCryptoStore(localStorage),
+	userId: '@testbot42:matrix.org',
+	deviceId,
 });
 
 client.on('sync', async function (state, prevState, res) {
-  if (state !== 'PREPARED') return;
-  client.setGlobalErrorOnUnknownDevices(false);
-  await client.joinRoom(room);
-  await client.sendEvent(
-    room,
-    'm.room.message',
-    {
-      msgtype: 'm.text',
-      format: 'org.matrix.custom.html',
-      body: message,
-      formatted_body: message,
-    },
-    ''
-  );
-  process.exit(1);
+	if (state !== 'PREPARED') return;
+	client.setGlobalErrorOnUnknownDevices(false);
+	try {
+		await client.joinRoom(room);
+		await client.sendEvent(
+			room,
+			'm.room.message',
+			{
+				msgtype: 'm.text',
+				format: 'org.matrix.custom.html',
+				body: message,
+				formatted_body: message,
+			},
+			''
+		);
+	} catch (error) {
+		core.setFailed(error.message);
+	}
+	process.exit(1);
 });
 async function run() {
-  await client.initCrypto();
-  await client.startClient({ initialSyncLimit: 1 });
+	await client.initCrypto();
+	await client.startClient({ initialSyncLimit: 1 });
 }
 
-run().catch((error) => console.error(error));
+run().catch((error) => core.setFailed(error.message));
 
 
 /***/ }),
