@@ -8,6 +8,8 @@ const {
 	LocalStorageCryptoStore,
 } = require('matrix-js-sdk/lib/crypto/store/localStorage-crypto-store');
 
+console.error = (error) => console.log('Console error: ', error)
+
 const message = core.getInput('message');
 const server = core.getInput('server');
 const room = core.getInput('room');

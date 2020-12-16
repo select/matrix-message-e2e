@@ -42,7 +42,7 @@ jobs:
 		steps:
 		- name: Send message to test room
 			id: matrix-chat-message
-			uses: select/matrix-message-e2e@v1.0.6
+			uses: select/matrix-message-e2e@v1.0.7
 			with:
 				server: ${{ secrets.MATRIX_SERVER }}
 				token: ${{ secrets.MATRIX_TOKEN }}
