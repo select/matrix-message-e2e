@@ -1,24 +1,24 @@
 name: 'Matrix Message e2e'
 description: 'Send an e2e encrypted message to a Matrix room'
 branding:
-	icon: 'message-circle'
-	color: 'green'
+  icon: 'message-circle'
+  color: 'green'
 inputs:
-	token:
-		description: 'Access token for your account'
-		required: true
-	deviceId:
-		description: 'The decive id for your account'
-		required: true
-	server:
-		description: 'Homeserver of your account'
-		default: 'https://matrix.org'
-	room:
-		description: 'The internal room ID of the room to send the message to'
-		required: true
-	message:
-		description: 'The message you want to send'
-		required: true
+  token:
+    description: 'Access token for your account'
+    required: true
+  deviceId:
+    description: 'The decive id for your account'
+    required: true
+  server:
+    description: 'Homeserver of your account'
+    default: 'https://matrix.org'
+  room:
+    description: 'The internal room ID of the room to send the message to'
+    required: true
+  message:
+    description: 'The message you want to send'
+    required: true
 runs:
-	using: 'node12'
-	main: 'dist/index.js'
+  using: 'node12'
+  main: 'dist/index.js'
