@@ -9,7 +9,9 @@ const {
 } = require('matrix-js-sdk/lib/crypto/store/localStorage-crypto-store');
 
 // Must catch all stderr to not make the job look failed on irrelevant matrix error logs
+console.error = (error) => console.log('Console error: ', error);
 process.stderr.write = () => {};
+process.stdout.write = () => {};
 
 const message = core.getInput('message');
 const server = core.getInput('server');
