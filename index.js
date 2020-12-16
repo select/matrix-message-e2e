@@ -8,7 +8,10 @@ const {
 	LocalStorageCryptoStore,
 } = require('matrix-js-sdk/lib/crypto/store/localStorage-crypto-store');
 
-console.error = (error) => console.log('Console error: ', error)
+console.error = (error) => {
+	console.log('Console error: ', error);
+};
+console.log = () => {};
 
 const message = core.getInput('message');
 const server = core.getInput('server');
@@ -45,6 +48,7 @@ client.on('sync', async function (state, prevState, res) {
 	} catch (error) {
 		core.setFailed('Job failed: ' + error.message);
 	}
+	client.stopClient();
 	process.exit(0);
 });
 async function run() {
