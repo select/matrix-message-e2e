@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.8](https://github.com/select/matrix-message-e2e/compare/v1.0.7...v1.0.8) (2020-12-16)
+
+
+### Bug Fixes
+
+* redirect console output ([fc1d999](https://github.com/select/matrix-message-e2e/commit/fc1d999a647f59405e91030f1d5d0c2aa672ec25))
+
 ### [1.0.7](https://github.com/select/matrix-message-e2e/compare/v1.0.6...v1.0.7) (2020-12-16)
 
 
