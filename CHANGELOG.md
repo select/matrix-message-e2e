@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/select/matrix-message-e2e/compare/v1.0.4...v1.0.5) (2020-12-16)
+
+
+### Bug Fixes
+
+* fix yaml formatting ([b69eb77](https://github.com/select/matrix-message-e2e/commit/b69eb77b0951a9e31ede0abced4c6e50845e0785))
+
 ### [1.0.4](https://github.com/select/matrix-message-e2e/compare/v1.0.3...v1.0.4) (2020-12-16)
 
 
