@@ -32,23 +32,23 @@ In your matrix client open `Room settings`>`Advanced`, the room id lookes like t
 ```yaml
 name: Pull-Request-Matrix-Message
 on:
-	pull_request:
-		types: [opened, reopened]
+  pull_request:
+    types: [opened, reopened]
 
 jobs:
-	send-message:
-		runs-on: ubuntu-latest
-		name: Send message via Matrix
-		steps:
-		- name: Send message to test room
-			id: matrix-chat-message
-			uses: select/matrix-message-e2e@1.0.9
-			with:
-				server: ${{ secrets.MATRIX_SERVER }}
-				token: ${{ secrets.MATRIX_TOKEN }}
-				deviceId: ${{ secrets.MATRIX_DEVICEID }}
-				room: ${{ secrets.MATRIX_ROOM }}
-				message: "${{ github.event.sender.login }} created a pull request for ${{ github.event.repository.name }}: ${{ github.event.pull_request.title }}"
+  send-message:
+    runs-on: ubuntu-latest
+    name: Send message via Matrix
+    steps:
+    - name: Send message to test room
+      id: matrix-chat-message
+      uses: select/matrix-message-e2e@1.0.9
+      with:
+        server: ${{ secrets.MATRIX_SERVER }}
+        token: ${{ secrets.MATRIX_TOKEN }}
+        deviceId: ${{ secrets.MATRIX_DEVICEID }}
+        room: ${{ secrets.MATRIX_ROOM }}
+        message: "${{ github.event.sender.login }} created a pull request for ${{ github.event.repository.name }}: ${{ github.event.pull_request.title }}"
 ```
 
 ## Acknowledgements
