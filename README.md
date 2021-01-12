@@ -51,6 +51,9 @@ jobs:
         message: "${{ github.event.sender.login }} created a pull request for ${{ github.event.repository.name }}: ${{ github.event.pull_request.title }}"
 ```
 
+## Known Issues
+The job currently fails even though everything went fine. Read more here https://github.com/select/matrix-message-e2e/issues/1
+
 ## Acknowledgements
 
 This work is here thanks to 
